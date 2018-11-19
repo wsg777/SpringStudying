@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--单例-->
+    <!--<bean name="user"-->
+          <!--class="com.wangshaogang.c_scope.User"-->
+            <!--scope="singleton" />-->
+
+    <!--多例-->
+    <bean name="user2"
+          class="com.wangshaogang.c_scope.User"
+            scope="prototype" />
+
+    <!--导入其他配置文件-->
+    <!--<import resource="applicationContext2.xml" />-->
+
+</beans>

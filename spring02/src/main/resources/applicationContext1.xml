@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:content="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--扫描注解，包括后代包，想偷懒可以把范围写大一些-->
+    <content:component-scan base-package="com.wangshaogang.a" />
+    <!--<bean name="user" class="com.wangshaogang.a.User">-->
+        <!--<property name="name" value="Tom" />-->
+    <!--</bean>-->
+
+    <bean name="car2" class="com.wangshaogang.a.Car">
+        <property name="name" value="car2" />
+        <property name="color" value="yellow" />
+    </bean>
+</beans>

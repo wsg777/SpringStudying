@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--配置目标对象-->
+    <bean name="userService" class="com.wangshaogang.b_proxy.UserServiceImpl" />
+    <!--配置通知对象-->
+    <bean name="myAdvice" class="com.wangshaogang.b_proxy.MyAdvice" />
+    <!--将通知织入目标对象-->
+    <aop:config>
+        <!--配置切入点（确定要增强的方法）-->
+        <!--id随便取-->
+        <!--这里的expression表示：
+            任意返回值
+            ServiceImpl结尾的类
+            所有方法
+            参数任意
+        -->
+        <aop:pointcut id="pc" expression="execution(* com.wangshaogang.b_proxy.*ServiceImpl.*(..))" />
+        <!--描述通知类型-->
+        <aop:aspect ref="myAdvice">
+            <!--method是通知的具体方法
+                pointcut-ref是pointcut的id
+            -->
+            <aop:before method="before" pointcut-ref="pc" />
+            <aop:after-returning method="afterReturning" pointcut-ref="pc" />
+            <aop:around method="around" pointcut-ref="pc" />
+            <aop:after-throwing method="afterException" pointcut-ref="pc" />
+            <aop:after method="after" pointcut-ref="pc" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>

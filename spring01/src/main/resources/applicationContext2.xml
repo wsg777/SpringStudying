@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--空参创建对象-->
+    <bean name="user"
+          class="com.wangshaogang.b_create.User" />
+
+    <!--静态工厂创建对象（了解）-->
+    <!--<bean name="user2"-->
+          <!--class="com.wangshaogang.b_create.User-->
+          <!--factory-method="createUser2" />-->
+
+    <!--实例工厂创建对象（了解）-->
+    <!--<bean name="factory"-->
+          <!--class="com.wangshaogang.b_create.UserFactory" />-->
+    <!--<bean name="user3"-->
+          <!--factory-bean="factory"-->
+          <!--factory-method="createUser3" />-->
+
+    <!--生命周期-->
+    <bean name="user3"
+          class="com.wangshaogang.b_create.User"
+          init-method="init"
+          destroy-method="destroy"/>
+
+</beans>

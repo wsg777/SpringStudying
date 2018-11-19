@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="car" class="com.wangshaogang.d_inject.Car">
+        <property name="name" value="BMW"/>
+        <property name="color" value="black"/>
+    </bean>
+
+    <!--set注入-->
+    <bean name="user" class="com.wangshaogang.d_inject.User">
+        <property name="name" value="Tom"/>
+        <property name="age" value="18"/>
+        <property name="car" ref="car"/>
+    </bean>
+
+    <!--构造方法注入-->
+    <bean name="user2" class="com.wangshaogang.d_inject.User">
+        <constructor-arg name="name" value="Jerry" type="java.lang.String" index="0" />
+        <constructor-arg name="age" value="20" />
+        <constructor-arg name="car" ref="car" />
+    </bean>
+
+    <!--===================================================================================-->
+
+    <!--复杂类型注入-->
+    <bean name="cb" class="com.wangshaogang.d_inject.CollectionBean">
+        <property name="arr">
+            <array>
+                <value>Tom</value>
+                <value>Jerry</value>
+                <ref bean="car"></ref>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>Jack</value>
+                <value>Rose</value>
+                <ref bean="car"></ref>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="k" value="v" />
+                <entry key="car" value-ref="car" />
+            </map>
+        </property>
+        <property name="prop">
+            <props>
+                <prop key="k">v</prop>
+                <prop key="car">car</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
